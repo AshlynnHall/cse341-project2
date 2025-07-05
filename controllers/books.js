@@ -28,11 +28,12 @@ const createBook = async (req, res) => {
     if (!title || !author || !genre || !rating || !review || !userId || !date) {
       return res.status(400).json({ error: 'All fields are required.' });
     }
-    const result = await db.collection('books').insertOne({
-      title, author, genre, rating, review, userId, date
-    });
-    res.status(201).json(result.ops[0]);
+    const book = { title, author, genre, rating, review, userId, date };
+    const result = await db.collection('books').insertOne(book);
+    book._id = result.insertedId;
+    res.status(201).json(book);
   } catch (err) {
+    console.error('Create book error:', err);
     res.status(500).json({ error: 'Failed to create book.' });
   }
 };

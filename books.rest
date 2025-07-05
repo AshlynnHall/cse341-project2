@@ -1,0 +1,75 @@
+# Get all books
+GET http://localhost:3000/books
+###
+# Get a single book
+GET http://localhost:3000/books/BOOK_ID_HERE
+###
+# Create a new book
+POST http://localhost:3000/books
+Content-Type: application/json
+
+{
+  "title": "The Hunger Games",
+  "author": "Suzanne Collins",
+  "genre": "Dystopian",
+  "rating": 5,
+  "review": "Great book!",
+  "userId": "6869a4654a3bbe42883c6abd",
+  "date": "07-05-2025"
+}
+###
+# Update a book
+PUT http://localhost:3000/books/BOOK_ID_HERE
+Content-Type: application/json
+
+{
+  "title": "Updated Book",
+  "author": "Jane Doe",
+  "genre": "Mystery",
+  "rating": 4,
+  "review": "Even better!",
+  "userId": "USER_ID_HERE",
+  "date": "2025-07-06"
+}
+###
+# Delete a book
+DELETE http://localhost:3000/books/6869a58ebb7b8f987038edfc
+
+# RENDER LINKS BELOW
+
+# Get all books (Render)
+GET https://cse341-project2-rr2b.onrender.com/books
+###
+# Get a single book (Render)
+GET https://cse341-project2-rr2b.onrender.com/books/BOOK_ID_HERE
+###
+# Create a new book (Render)
+POST https://cse341-project2-rr2b.onrender.com/books
+Content-Type: application/json
+
+{
+  "title": "Sample Book",
+  "author": "Jane Doe",
+  "genre": "Fiction",
+  "rating": 5,
+  "review": "Great book!",
+  "userId": "USER_ID_HERE",
+  "date": "2025-07-05"
+}
+###
+# Update a book (Render)
+PUT https://cse341-project2-rr2b.onrender.com/books/BOOK_ID_HERE
+Content-Type: application/json
+
+{
+  "title": "Updated Book",
+  "author": "Jane Doe",
+  "genre": "Mystery",
+  "rating": 4,
+  "review": "Even better!",
+  "userId": "USER_ID_HERE",
+  "date": "2025-07-06"
+}
+###
+# Delete a book (Render)
+DELETE https://cse341-project2-rr2b.onrender.com/books/BOOK_ID_HERE

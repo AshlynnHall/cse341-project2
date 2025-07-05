@@ -1,0 +1,55 @@
+# Get all users
+GET http://localhost:3000/users
+###
+# Get a single user
+GET http://localhost:3000/users/6869a4654a3bbe42883c6abd
+###
+# Create a new user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Ashlynn Hall",
+  "email": "ashlynn@example.com"
+}
+###
+# Update a user
+PUT http://localhost:3000/users/6869a4654a3bbe42883c6abd
+Content-Type: application/json
+
+{
+  "name": "Ashlynn Updated",
+  "email": "ashlynn.updated@example.com"
+}
+###
+# Delete a user
+DELETE http://localhost:3000/users/6869a4cabb7b8f987038edfa
+
+# RENDER LINKS BELOW
+
+# Get all users (Render)
+GET https://cse341-project2-rr2b.onrender.com/users
+###
+# Get a single user (Render)
+GET https://cse341-project2-rr2b.onrender.com/users/6869a4654a3bbe42883c6abd
+###
+# Create a new user (Render)
+POST https://cse341-project2-rr2b.onrender.com/6869a4654a3bbe42883c6abd
+Content-Type: application/json
+
+{
+  "name": "Ashlynn Hall",
+  "email": "ashlynn@example.com"
+}
+###
+# Update a user (Render)
+PUT https://cse341-project2-rr2b.onrender.com/users/6869a4654a3bbe42883c6abd
+Content-Type: application/json
+
+{
+  "name": "Ashlynn Updated",
+  "email": "ashlynn.updated@example.com"
+}
+###
+# Delete a user (Render)
+DELETE https://cse341-project2-rr2b.onrender.com/users/6869a4654a3bbe42883c6abd

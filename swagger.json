@@ -1,0 +1,23 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Book Review API",
+    "version": "1.0.0",
+    "description": "API for managing books and users"
+  },
+  "paths": {
+    "/books": {
+      "get": { "summary": "Get all books" },
+      "post": { "summary": "Create a new book" }
+    },
+    "/books/{id}": {
+      "get": { "summary": "Get book by ID" },
+      "put": { "summary": "Update book by ID" },
+      "delete": { "summary": "Delete book by ID" }
+    },
+    "/users": {
+      "get": { "summary": "Get all users" },
+      "post": { "summary": "Create a new user" }
+    }
+  }
+}

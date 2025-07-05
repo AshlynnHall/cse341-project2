@@ -17,8 +17,9 @@ async function start() {
   try {
     await client.connect();
     app.locals.db = client.db('books');
-    app.listen(3000, () => {
-      console.log('Connected to DB and listening on 3000');
+    const port = process.env.PORT || 3000; // Use Render's port or default to 3000
+    app.listen(port, () => {
+      console.log(`Connected to DB and listening on ${port}`);
     });
   } catch (err) {
     console.error('Failed to connect to DB', err);

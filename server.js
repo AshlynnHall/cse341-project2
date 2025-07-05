@@ -1,5 +1,7 @@
 const express = require('express');
 const { MongoClient } = require('mongodb');
+const swaggerUi = require('swagger-ui-express');
+const fs = require('fs');
 require('dotenv').config();
 
 const app = express();
@@ -25,6 +27,12 @@ async function start() {
     console.error('Failed to connect to DB', err);
   }
 }
+
+// Load swagger.json
+const swaggerDocument = JSON.parse(fs.readFileSync('./swagger.json', 'utf8'));
+
+// Add before your app.listen/start()
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get('/', (req, res) => {
   res.send('Book Review API is running!');

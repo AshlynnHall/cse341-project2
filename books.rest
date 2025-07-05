@@ -9,11 +9,11 @@ POST http://localhost:3000/books
 Content-Type: application/json
 
 {
-  "title": "The Hunger Games",
-  "author": "Suzanne Collins",
-  "genre": "Dystopian",
+  "title": "Pride and Prejudice",
+  "author": "Jane Austen",
+  "genre": "Classic",
   "rating": 5,
-  "review": "Great book!",
+  "review": "One of my favorites!",
   "userId": "6869a4654a3bbe42883c6abd",
   "date": "07-05-2025"
 }
@@ -48,13 +48,13 @@ POST https://cse341-project2-rr2b.onrender.com/books
 Content-Type: application/json
 
 {
-  "title": "Sample Book",
-  "author": "Jane Doe",
-  "genre": "Fiction",
+  "title": "Pride and Prejudice",
+  "author": "Jane Austen",
+  "genre": "Classic",
   "rating": 5,
-  "review": "Great book!",
-  "userId": "USER_ID_HERE",
-  "date": "2025-07-05"
+  "review": "One of my favorites!",
+  "userId": "6869a4654a3bbe42883c6abd",
+  "date": "07-05-2025"
 }
 ###
 # Update a book (Render)

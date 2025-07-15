@@ -5,6 +5,7 @@ const fs = require('fs');
 const session = require('express-session');
 const passport = require('passport');
 const GitHubStrategy = require('passport-github2').Strategy;
+const MongoStore = require('connect-mongo');
 require('dotenv').config();
 
 const app = express();
@@ -14,7 +15,12 @@ app.use(express.json());
 app.use(session({
   secret: process.env.SESSION_SECRET || 'dev_secret',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGODB_URI,
+    dbName: 'books', 
+    collectionName: 'sessions'
+  })
 }));
 
 app.use(passport.initialize());

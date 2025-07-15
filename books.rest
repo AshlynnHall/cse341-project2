@@ -23,17 +23,17 @@ PUT http://localhost:3000/books/BOOK_ID_HERE
 Content-Type: application/json
 
 {
-  "title": "Updated Book",
-  "author": "Jane Doe",
-  "genre": "Mystery",
+  "title": "The Hunger Games",
+  "author": "Suzanne Collins",
+  "genre": "Dystopian",
   "rating": 4,
-  "review": "Even better!",
-  "userId": "USER_ID_HERE",
+  "review": "A gripping tale of survival!",
+  "userId": "6869a4654a3bbe42883c6abd",
   "date": "2025-07-06"
 }
 ###
 # Delete a book
-DELETE http://localhost:3000/books/6869a58ebb7b8f987038edfc
+DELETE http://localhost:3000/books/6876c872c1beedf377b4a42c
 
 # RENDER LINKS BELOW
 
@@ -48,28 +48,28 @@ POST https://cse341-project2-rr2b.onrender.com/books
 Content-Type: application/json
 
 {
-  "title": "Pride and Prejudice",
-  "author": "Jane Austen",
-  "genre": "Classic",
-  "rating": 5,
-  "review": "One of my favorites!",
+  "title": "Boys in the Boat",
+  "author": "Daniel James Brown",
+  "genre": "Non-Fiction",
+  "rating": 4,
+  "review": "Decent book!",
   "userId": "6869a4654a3bbe42883c6abd",
   "date": "07-05-2025"
 }
 ###
 # Update a book (Render)
-PUT https://cse341-project2-rr2b.onrender.com/books/BOOK_ID_HERE
+PUT https://cse341-project2-rr2b.onrender.com/books/6869a60ebb7b8f987038edfe
 Content-Type: application/json
 
 {
-  "title": "Updated Book",
-  "author": "Jane Doe",
-  "genre": "Mystery",
+  "title": "The Hunger Games",
+  "author": "Suzanne Collins",
+  "genre": "Dystopian",
   "rating": 4,
-  "review": "Even better!",
-  "userId": "USER_ID_HERE",
+  "review": "A gripping tale of survival!",
+  "userId": "6869a4654a3bbe42883c6abd",
   "date": "2025-07-06"
 }
 ###
 # Delete a book (Render)
-DELETE https://cse341-project2-rr2b.onrender.com/books/BOOK_ID_HERE
+DELETE https://cse341-project2-rr2b.onrender.com/books/686d471c97c304fa1661220a

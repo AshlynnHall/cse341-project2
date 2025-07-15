@@ -19,14 +19,14 @@ Content-Type: application/json
 }
 ###
 # Update a book
-PUT http://localhost:3000/books/BOOK_ID_HERE
+PUT http://localhost:3000/books/6869a60ebb7b8f987038edfe
 Content-Type: application/json
 
 {
   "title": "The Hunger Games",
   "author": "Suzanne Collins",
   "genre": "Dystopian",
-  "rating": 4,
+  "rating": 3,
   "review": "A gripping tale of survival!",
   "userId": "6869a4654a3bbe42883c6abd",
   "date": "2025-07-06"

@@ -10,36 +10,7 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 
-const usersRoutes = require('./routes/users');
-app.use('/users', usersRoutes);
-
-const booksRoutes = require('./routes/books');
-app.use('/books', booksRoutes);
-
-const client = new MongoClient(process.env.MONGODB_URI);
-
-async function start() {
-  try {
-    await client.connect();
-    app.locals.db = client.db('books');
-    const port = process.env.PORT || 3000;
-    app.listen(port, () => {
-      console.log(`Connected to DB and listening on ${port}`);
-    });
-  } catch (err) {
-    console.error('Failed to connect to DB', err);
-  }
-}
-
-const swaggerDocument = JSON.parse(fs.readFileSync('./swagger.json', 'utf8'));
-
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
-app.get('/', (req, res) => {
-  res.send('Book Review API is running!');
-});
-
-// Smiddleware
+// Session and Passport setup 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'dev_secret',
   resave: false,
@@ -60,6 +31,7 @@ passport.use(new GitHubStrategy({
 passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((obj, done) => done(null, obj));
 
+// Auth routes
 app.get('/auth/github',
   passport.authenticate('github', { scope: [ 'user:email' ] })
 );
@@ -67,15 +39,16 @@ app.get('/auth/github',
 app.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/' }),
   (req, res) => {
-    res.redirect('/'); 
+    res.redirect('/');
   }
 );
 
+// Middleware
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) return next();
   res.status(401).json({ error: 'Unauthorized' });
 }
-
+// Protect routes
 app.use('/books', (req, res, next) => {
   if (['POST', 'PUT', 'DELETE'].includes(req.method)) {
     return ensureAuthenticated(req, res, next);
@@ -88,5 +61,37 @@ app.use('/users', (req, res, next) => {
   }
   next();
 });
+
+// Register routers
+const usersRoutes = require('./routes/users');
+app.use('/users', usersRoutes);
+
+const booksRoutes = require('./routes/books');
+app.use('/books', booksRoutes);
+
+// Swagger setup
+const swaggerDocument = JSON.parse(fs.readFileSync('./swagger.json', 'utf8'));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+// Home route
+app.get('/', (req, res) => {
+  res.send('Book Review API is running!');
+});
+
+// MongoDB connection and server start
+const client = new MongoClient(process.env.MONGODB_URI);
+
+async function start() {
+  try {
+    await client.connect();
+    app.locals.db = client.db('books');
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => {
+      console.log(`Connected to DB and listening on ${port}`);
+    });
+  } catch (err) {
+    console.error('Failed to connect to DB', err);
+  }
+}
 
 start();

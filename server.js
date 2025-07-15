@@ -43,6 +43,15 @@ app.get('/auth/github/callback',
   }
 );
 
+// Logout route
+app.get('/logout', (req, res) => {
+  req.logout(() => {
+    req.session.destroy(() => {
+      res.redirect('/');
+    });
+  });
+});
+
 // Middleware
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) return next();

@@ -9,6 +9,7 @@ const MongoStore = require('connect-mongo');
 require('dotenv').config();
 
 const app = express();
+app.set('trust proxy', 1);
 app.use(express.json());
 
 app.use((req, res, next) => {

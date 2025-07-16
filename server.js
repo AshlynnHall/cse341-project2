@@ -11,6 +11,15 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 
+if (process.env.NODE_ENV === 'production') {
+  app.use((req, res, next) => {
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+      return res.redirect('https://' + req.headers.host + req.url);
+    }
+    next();
+  });
+}
+
 // Session and Passport setup 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'dev_secret',
@@ -110,12 +119,3 @@ async function start() {
 }
 
 start();
-
-if (process.env.NODE_ENV === 'production') {
-  app.use((req, res, next) => {
-    if (req.headers['x-forwarded-proto'] !== 'https') {
-      return res.redirect('https://' + req.headers.host + req.url);
-    }
-    next();
-  });
-}

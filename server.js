@@ -54,8 +54,9 @@ app.get('/auth/github',
   passport.authenticate('github', { scope: [ 'user:email' ] })
 );
 
+
 app.get('/auth/github/callback',
-  passport.authenticate('github', { failureRedirect: '/' }),
+  passport.authenticate('github', { failureRedirect: '/auth/failure' }),
   (req, res) => {
     res.redirect('/');
   }
@@ -64,13 +65,6 @@ app.get('/auth/github/callback',
 app.get('/whoami', (req, res) => {
   res.json({ user: req.user });
 });
-
-app.get('/auth/github/callback',
-  passport.authenticate('github', { failureRedirect: '/auth/failure' }),
-  (req, res) => {
-    res.redirect('/');
-  }
-);
 
 app.get('/auth/failure', (req, res) => {
   res.send('GitHub authentication failed');

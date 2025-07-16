@@ -21,6 +21,7 @@ app.use((req, res, next) => {
   next();
 });
 
+
 // Session and Passport setup 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'dev_secret',
